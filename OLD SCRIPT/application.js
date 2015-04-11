@@ -32,7 +32,7 @@ function hideAddressBar(){
 	var and = ~ua.indexOf('Android');
 	/*var ios = ~ua.indexOf('iPhone') || ~ua.indexOf('iPod');
 	var full = window.navigator.standalone;*/
-	
+
 	if(and){
 		document.body.style.height = (window.innerHeight + 56) + 'px';
 		setTimeout(function() { window.scrollTo(0, 1); }, 1);
@@ -63,18 +63,18 @@ function locateMe(){
 function foundMe(position){
 	if(position.coords.accuracy > 1000){
 		return;
-	}	
-		
+	}
+
 	var lat = Math.round(position.coords.latitude * 100000) / 100000;
 	var lng = Math.round(position.coords.longitude * 100000) / 100000;
 	var qib = locateQibla(lat, lng);
-	var wind = locateWind(qib);	
-	
+	var wind = locateWind(qib);
+
 	writeCookie("latitude", lat, 365);
 	writeCookie("longitude", lng, 365);
-	writeCookie("qibla", qib, 365);	
-	writeCookie("wind", wind, 365);	
-	
+	writeCookie("qibla", qib, 365);
+	writeCookie("wind", wind, 365);
+
 	updateApplication();
 }
 
@@ -97,7 +97,7 @@ function locateWind(ang){
 
 function updateApplication(){
 	if(typeof updateCompass == 'function')
-		updateCompass(); 
+		updateCompass();
 	if(typeof updateTimes == 'function')
-		updateTimes(); 	
+		updateTimes();
 }
