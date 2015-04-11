@@ -1,8 +1,8 @@
 #V-20150411-testing
 CACHE:
-/
-/qibla
-/settings
+/index.html
+/qibla/index.html
+/settings/index.html
 /scripts/application.js
 /scripts/compass.js
 /scripts/settings.js
