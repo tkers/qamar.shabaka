@@ -45,19 +45,7 @@ function hideAddressBar(){
 
 /* Geolocation finding */
 function locateMe(){
-	if (customLon && customLat) {
-		window.alert("Custom Lon/Lat");
-		foundMe({
-			coords: {
-				longitude: customLon,
-				latitude: customLat,
-				accuracy: 0
-			}
-		});
-	}
-	else {
-		navigator.geolocation.getCurrentPosition(foundMe);
-	}
+	navigator.geolocation.getCurrentPosition(foundMe);
 }
 
 function foundMe(position){
