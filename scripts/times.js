@@ -24,12 +24,12 @@ function loadConfiguration(){
 	var dt = new Date()
 	var tz = dt.getTimezoneOffset();
 	timezone = -tz/60.0;
-	
+
 	latitude = parseFloat(readCookie("latitude"));
 	longitude =  parseFloat(readCookie("longitude"));
-	
+
 	var method = parseInt(readCookie("method"));
-	
+
 	if(method == 1){ // Karachi
 		fajrangle = 18;
 		dhuhroffset = 0;
@@ -78,19 +78,19 @@ function loadConfiguration(){
 		ishaindegrees = true;
 		ishaangle = 17.5;
 	}
-	
+
 	hanafi = parseInt(readCookie("hanafi")) == 1;
-	
-	highlats = parseInt(readCookie("highlats"));	
+
+	highlats = parseInt(readCookie("highlats"));
 }
 
 function updateTimes(){
 	loadConfiguration();
 	calculateTimes();
-	
+
 	current = getCurrent();
 	setSawm(current < 5);
-	
+
 	var arab = parseInt(readCookie("language")) == 1;
 
 	clearTimes();
@@ -99,15 +99,15 @@ function updateTimes(){
 			addTime((arab ? names_arab[i] : names[i]), showTime(times[i]), (current == i));
 		}
 	}
-	
+
 	var scrollme = document.getElementById('scrollme');
 	var pointer = document.getElementById('scrollhere');
-		
+
 	if(arab){
 		scrollme.scrollLeft = pointer.offsetLeft - scrollme.offsetWidth + pointer.offsetWidth;
 	}
 	else{
-		scrollme.scrollLeft = pointer.offsetLeft;		
+		scrollme.scrollLeft = pointer.offsetLeft;
 	}
 }
 
@@ -118,12 +118,12 @@ function calculateTimes(){
 	for(var i = 0; i < 7; i++){
 		times[i] = 0;
 	}
-	
-	// Calculate times   
+
+	// Calculate times
     for(var i = 0; i < 3; i++){
         times[0] = computeTime(180 - fajrangle, times[0], true);
         times[1] = computeTime(180 - 0.833, times[1]);
-        times[2] = computeMidday(times[2]);	
+        times[2] = computeMidday(times[2]);
         times[3] = computeAsr((hanafi ? 2 : 1), times[3]);
         times[4] = computeTime(0.833, times[4]);
         if(maghribindegrees){
@@ -133,31 +133,31 @@ function calculateTimes(){
         	times[6] = computeTime(ishaangle, times[6]);
         }
     }
-   
-   
+
+
    	// Add offsets
     times[2] += dhuhroffset / 60.0;
-    
+
     if(!maghribindegrees){
     	times[5] = times[4] + maghriboffset / 60.0;
     }
-    
+
     if(!ishaindegrees){
     	times[6] = times[5] + ishaoffset / 60.0;
     }
-    
+
     // Adjust timezone
     for(var i = 0; i < 7; i++){
         times[i] += timezone - longitude/15.0;
     }
-    
+
     // Adjust for high latitudes
     var nighttime = fixHour(times[1] - times[4]);
-    
+
     var fajrDiff = getNightPortion(fajrangle) * nighttime;
     var ishaDiff = getNightPortion(ishaindegrees ? ishaangle : 18.0) * nighttime;
     var maghribDiff = getNightPortion(maghribindegrees ? maghribangle : 4.0) * nighttime;
-    
+
     if(isNaN(times[0]) || fixHour(times[1] - times[0]) > fajrDiff){
         times[0] = times[1] - fajrDiff;
     }
@@ -167,7 +167,7 @@ function calculateTimes(){
     if(isNaN(times[6]) || fixHour(times[6] - times[4]) > ishaDiff){
         times[6] = times[4] + ishaDiff;
     }
-    
+
     // Wrap to 24h
     for(var i = 0; i < 7; i++){
         times[i] = fixHour(times[i]);
@@ -180,10 +180,10 @@ function getCurrent(){
 
     // Round because floats are terrible when fajr = isha
     // Although I assume there are neater solutions for this...
-	timeswitch = new Array(7);	
+	timeswitch = new Array(7);
     for(var i = 0; i < 7; i++)
         timeswitch[i] = Math.round(times[i] * 3600);
-    
+
     var min = 86401;
     var m = -1;
     for(var i = 0; i < 7; i++){
@@ -210,34 +210,34 @@ function getJulianDate(){
 	var d = dt.getDate();
 	var m = dt.getMonth() + 1;
 	var y = dt.getFullYear();
-	
+
 	if(m <= 2){
 		y -= 1;
 		m += 12;
 	}
 	var a = Math.floor(y / 100);
 	var b = 2 - a + Math.floor(a / 4);
-	
+
 	var jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1))+ d + b - 1524.5;
-	
+
 	return jd;
 }
 
 function getSunPosition(t){
-    var D = julianDate + t - 2451545.0;    
-    
+    var D = julianDate + t - 2451545.0;
+
     var g = fixAngle(357.529 + 0.98560028 * D);
     var q = fixAngle(280.459 + 0.98564736 * D);
     var L = fixAngle(q + 1.915 * Math.sin(deg2rad(g)) + 0.020 * Math.sin(deg2rad(2 * g)));
 
     //var R = 1.00014 - 0.01671 * cos(deg2rad($g)) - 0.00014 * cos(deg2rad(2 * $g));
-    
+
     var e = 23.439 - 0.00000036 * D;
-    var d = rad2deg(Math.asin(Math.sin(deg2rad(e))* Math.sin(deg2rad(L))));    
+    var d = rad2deg(Math.asin(Math.sin(deg2rad(e))* Math.sin(deg2rad(L))));
     var RA = fixHour(rad2deg(Math.atan2(Math.cos(deg2rad(e))* Math.sin(deg2rad(L)), Math.cos(deg2rad(L)))) / 15);
-    
+
     var EqT = q/15 - RA;
-    
+
     return new Array(d, EqT);
 }
 
@@ -290,6 +290,9 @@ function fixHour(a){
 }
 
 function showTime(t){
+	if (isNaN(t))
+		return "?";
+		
 	var t = fixHour(t);
 	var h = Math.floor(t);
 	var m = Math.floor((t - h) * 60);
@@ -302,7 +305,7 @@ function showTime(t){
 /* Update interface */
 
 function setSawm(day){
-	document.getElementById("sawmimg").src = day ? "/img/sun2x.png" : "/img/moon2x.png";
+	document.getElementById("sawmimg").src = day ? "/imgs/sun2x.png" : "/imgs/moon2x.png";
 }
 
 function clearTimes(){
@@ -316,28 +319,28 @@ function addTime(name, time, active){
 	col.className = "col";
 	if(active)
 		col.id = "scrollhere";
-		
+
 	data.appendChild(col);
-	
+
 	var b = document.createElement("b");
 	if(active)
 		b.className = "highlighted";
 	b.innerText = name;
-	
+
 	col.appendChild(b);
-	
+
 	var br = document.createElement("br");
-	
+
 	col.appendChild(br);
-	
+
 	var time = document.createTextNode(time);
-	
+
 	col.appendChild(time);
-	
+
 	if(active){
 		var arrow = document.createElement("div");
 		arrow.className = "arrow";
-		col.appendChild(arrow);	
+		col.appendChild(arrow);
 	}
 }
 

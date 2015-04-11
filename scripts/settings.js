@@ -18,7 +18,7 @@ function setHighlats(n){
 
 function setLanguage(n){
 	writeCookie("language", n, 365);
-	window.location = "/times";
+	toTimes();
 }
 
 function checkSettings(){
