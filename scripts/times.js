@@ -290,6 +290,9 @@ function fixHour(a){
 }
 
 function showTime(t){
+	if (isNaN(t))
+		return "?";
+		
 	var t = fixHour(t);
 	var h = Math.floor(t);
 	var m = Math.floor((t - h) * 60);
