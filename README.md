@@ -1,7 +1,7 @@
-قمر.شبكة
-========
+qamar.shabaka
+=============
 
-[qamar.shabaka](http://xn--wgb7aj.xn--ngbc5azd)
+[قمر.شبكة](http://xn--wgb7aj.xn--ngbc5azd)
 
 Web app to calculate salat times
 
