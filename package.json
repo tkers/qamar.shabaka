@@ -1,0 +1,24 @@
+{
+  "name": "qamar.shabaka",
+  "version": "0.0.1",
+  "description": "Web app to calculate salat times",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lapixx/qamar.shabaka.git"
+  },
+  "author": "Tijn Kersjes <tijn@divbyzero.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lapixx/qamar.shabaka/issues"
+  },
+  "homepage": "https://github.com/Lapixx/qamar.shabaka",
+  "dependencies": {
+    "connect": "^3.4.0",
+    "serve-static": "^1.10.0"
+  }
+}
