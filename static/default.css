@@ -175,6 +175,11 @@ img.sunmoon{
 	margin-left: -100px;
 	margin-top: -100px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	transition: opacity 1s, margin-top 1s;
+}
+img.sunmoon.down{
+	opacity: 0;
+	margin-top: -70px;
 }
 
 @media all and (max-height: 350px){

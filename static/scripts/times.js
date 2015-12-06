@@ -292,7 +292,7 @@ function fixHour(a){
 function showTime(t){
 	if (isNaN(t))
 		return "?";
-		
+
 	var t = fixHour(t);
 	var h = Math.floor(t);
 	var m = Math.floor((t - h) * 60);
@@ -304,8 +304,33 @@ function showTime(t){
 
 /* Update interface */
 
+var isSawm;
 function setSawm(day){
-	document.getElementById("sawmimg").src = day ? "/imgs/sun2x.png" : "/imgs/moon2x.png";
+
+    // no change
+    if (day === isSawm)
+        return;
+
+    var sawmimg = document.getElementById("sawmimg");
+    var rise = function () {
+        sawmimg.src = isSawm ? "/imgs/sun2x.png" : "/imgs/moon2x.png";
+        sawmimg.classList.remove("down");
+    };
+
+    // first rise
+    if (typeof isSawm === "undefined")
+        setTimeout(rise, 100);
+
+    // update state
+    isSawm = day;
+
+    // already animating
+    if (sawmimg.classList.contains("down"))
+        return;
+
+    // start animation
+    sawmimg.classList.add("down");
+    setTimeout(rise, 1100);
 }
 
 function clearTimes(){
