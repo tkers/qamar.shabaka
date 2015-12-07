@@ -1,10 +1,13 @@
+"use strict";
+const PORT = 4444;
+
 // dependencies
-var connect = require("connect");
-var serveStatic = require("serve-static");
-var path = require("path");
+const connect = require("connect");
+const serveStatic = require("serve-static");
+const path = require("path");
 
-var dir = path.join(__dirname, "static");
+const dir = path.join(__dirname, "static");
 
-var app = connect();
+const app = connect();
 app.use(serveStatic(dir))
-app.listen(4444);
+app.listen(PORT);

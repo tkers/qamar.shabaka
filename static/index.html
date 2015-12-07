@@ -2,47 +2,47 @@
 
 <html manifest="/qamar.appcache">
 
-<head>
+    <head>
 
-<title>Qamar</title>
+        <title>Qamar</title>
 
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/icons/touch-icon-ipad-retina.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/icons/touch-icon-iphone-retina.png" />
-<link href="/icons/touch-icon-iphone-retina.png" rel="SHORTCUT ICON">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/icons/touch-icon-ipad-retina.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/icons/touch-icon-iphone-retina.png" />
+        <link href="/icons/touch-icon-iphone-retina.png" rel="SHORTCUT ICON">
 
-<link rel="apple-touch-startup-image" sizes="320x460" href="/icons/touch-startup.png" />
-<link rel="apple-touch-startup-image" sizes="640x920" href="/icons/touch-startup-retina.png" />
+        <link rel="apple-touch-startup-image" sizes="320x460" href="/icons/touch-startup.png" />
+        <link rel="apple-touch-startup-image" sizes="640x920" href="/icons/touch-startup-retina.png" />
 
-<link href="/default.css" rel="stylesheet" type="text/css" media="all">
+        <link href="/css/default.css" rel="stylesheet" type="text/css" media="all">
 
-<script type="text/javascript" src="/scripts/application.js"></script>
-<script type="text/javascript" src="/scripts/times.js"></script>
-<script type="text/javascript" src="/scripts/names_arab.js"></script>
-<script type="text/javascript" src="/scripts/settings.js"></script>
+        <script type="text/javascript" src="/js/application.js"></script>
+        <script type="text/javascript" src="/js/times.js"></script>
+        <script type="text/javascript" src="/js/arabicNames.js"></script>
+        <script type="text/javascript" src="/js/settings.js"></script>
 
-</head>
+    </head>
 
-<body ontouchstart="">
+    <body ontouchstart="">
 
-<img src="/imgs/compass.png" class="flipright" onclick="window.location='/qibla'">
-<img src="/imgs/gear.png" class="flipleft" onclick="toSettings()">
+        <img src="/imgs/compass.png" class="flipright" onclick="window.location='/qibla'">
+        <img src="/imgs/gear.png" class="flipleft" onclick="toSettings()">
 
-<center>
+        <center>
 
-<img src="/imgs/sun2x.png" class="sunmoon down" id="sawmimg" onclick="locateMe()">
+            <img src="/imgs/sun2x.png" class="sunmoon down" id="sawmimg" onclick="locateMe()">
 
-<div id="scrollme">
-<div class="secondborder" id="timesdata">
+            <div id="scrollme">
+                <div class="secondborder" id="timesdata">
 
-</div>
-</div>
+                </div>
+            </div>
 
-</center>
+        </center>
 
-</body>
+    </body>
 
 </html>

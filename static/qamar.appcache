@@ -1,16 +1,17 @@
 CACHE MANIFEST
 
-#V-20150411-js
+#V-20151206-js
 
 CACHE:
 /index.html
 /qibla/index.html
 /settings/index.html
-/scripts/application.js
-/scripts/compass.js
-/scripts/settings.js
-/scripts/times.js
-/default.css
+/js/application.js
+/js/arabicNames.js
+/js/compass.js
+/js/settings.js
+/js/times.js
+/css/default.css
 /imgs/sun2x.png
 /imgs/moon2x.png
 /imgs/needle2x.png
