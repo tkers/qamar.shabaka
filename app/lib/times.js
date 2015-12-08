@@ -1,3 +1,6 @@
+var readCookie = require("./cookies").read;
+var names_arab = require("./arabicNames");
+
 var maghribindegrees = true;
 var ishaindegrees = true;
 
@@ -7,7 +10,7 @@ var hanafi = false;
 var maghribangle = 4;
 var maghriboffset = 0;
 var ishaangle = 15;
-var ishaoffet = 0;
+var ishaoffset = 0;
 
 var timezone;
 var latitude;
@@ -180,7 +183,7 @@ function getCurrent(){
 
     // Round because floats are terrible when fajr = isha
     // Although I assume there are neater solutions for this...
-	timeswitch = new Array(7);
+	var timeswitch = new Array(7);
     for(var i = 0; i < 7; i++)
         timeswitch[i] = Math.round(times[i] * 3600);
 
@@ -369,14 +372,6 @@ function addTime(name, time, active){
 	}
 }
 
-/* Initialise */
-
-function startUp(){
-	checkSettings();
-	updateTimes();
-	hideAddressBar();
-	locateMe();
-	window.setInterval(updateTimes, 30*1000);
-}
-
-window.addEventListener('load', startUp, false);
+module.exports = {
+    updateTimes: updateTimes
+};

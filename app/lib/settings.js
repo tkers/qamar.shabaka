@@ -1,3 +1,7 @@
+var navigation = require("./navigation");
+var writeCookie = require("./cookies").write;
+var readCookie = require("./cookies").read;
+
 function setMethod(n){
 	writeCookie("method", n, 365);
 	document.getElementById("config_method").style.display = "none";
@@ -18,15 +22,19 @@ function setHighlats(n){
 
 function setLanguage(n){
 	writeCookie("language", n, 365);
-	toTimes();
+	navigation.toTimes();
 }
 
 function checkSettings(){
 	if(readCookie("method") == null || readCookie("hanafi") == null || readCookie("highlats") == null){
-		toSettings();
+		navigation.toSettings();
 	}
 }
 
-function toSettings(){
-	window.location = "/settings";
-}
+module.exports = {
+    checkSettings: checkSettings,
+    setMethod: setMethod,
+    setHanafi: setHanafi,
+    setHighlats: setHighlats,
+    setLanguage: setLanguage
+};

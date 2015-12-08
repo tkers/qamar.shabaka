@@ -1,3 +1,5 @@
+var readCookie = require("./cookies").read;
+
 function rotateNeedle(d) {
 	var e = document.getElementById('needle');
 	var s = "rotate(" + d + "deg)";
@@ -60,21 +62,19 @@ function calibrateHandler() {
 	alert("Please calibrate your compass.");
 }
 
+function initCompass() {
+    if(!window.DeviceOrientationEvent)
+        return;
+    window.addEventListener("deviceorientation", orientationHandler, false);
+    window.addEventListener("compassneedcalibration", calibrateHandler, false);
+}
+
 function updateCompass() {
 	dir_target = parseInt(readCookie("qibla"));
 	document.getElementById("heading").innerHTML = dir_target + "&deg; " + readCookie("wind");
 }
 
-/* Initialise */
-
-function startUp(){
-	updateCompass();
-	hideAddressBar();
-	locateMe();
-	if(window.DeviceOrientationEvent){
-		window.addEventListener("deviceorientation", orientationHandler, false);
-		window.addEventListener("compassneedcalibration", calibrateHandler, false);
-	}
-}
-
-window.addEventListener('load', startUp, false);
+module.exports = {
+    initCompass: initCompass,
+    updateCompass: updateCompass
+};

@@ -4,6 +4,9 @@
 const fs = require("fs");
 const path = require("path");
 const sass = require("node-sass");
+const webpack = require("webpack");
+
+/* compile stylesheets */
 
 process.stdout.write("Compiling SASS...");
 
@@ -25,3 +28,24 @@ if (!fs.existsSync(destFolder))
 fs.writeFileSync(dest, result.css);
 
 process.stdout.write(" Done!\n");
+
+/* bundle javascript */
+
+process.stdout.write("Bundling JS...");
+
+webpack({
+    entry: {
+        salat: path.join(__dirname, "../app/salat.js"),
+        qibla: path.join(__dirname, "../app/qibla.js"),
+        settings: path.join(__dirname, "../app/settings.js")
+    },
+    output: {
+        path: path.join(__dirname, "../static/js"),
+        filename: "[name].bundle.js"
+    }
+}, (err, res) => {
+    if (err) throw err;
+
+    process.stdout.write(" Done!\n");
+    process.exit(0);
+});

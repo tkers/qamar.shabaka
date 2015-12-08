@@ -1,16 +1,14 @@
 CACHE MANIFEST
 
-#V-20151206-js
+#V-20151208-wp
 
 CACHE:
 /index.html
 /qibla/index.html
 /settings/index.html
-/js/application.js
-/js/arabicNames.js
-/js/compass.js
-/js/settings.js
-/js/times.js
+/js/qibla.bundle.js
+/js/salat.bundle.js
+/js/settings.bundle.js
 /css/default.css
 /imgs/sun2x.png
 /imgs/moon2x.png

@@ -19,21 +19,18 @@
 
         <link href="/css/default.css" rel="stylesheet" type="text/css" media="all">
 
-        <script type="text/javascript" src="/js/application.js"></script>
-        <script type="text/javascript" src="/js/times.js"></script>
-        <script type="text/javascript" src="/js/arabicNames.js"></script>
-        <script type="text/javascript" src="/js/settings.js"></script>
+        <script type="text/javascript" src="/js/salat.bundle.js"></script>
 
     </head>
 
     <body ontouchstart="">
 
-        <img src="/imgs/compass.png" class="flipright" onclick="window.location='/qibla'">
+        <img src="/imgs/compass.png" class="flipright" onclick="toCompass()">
         <img src="/imgs/gear.png" class="flipleft" onclick="toSettings()">
 
         <center>
 
-            <img src="/imgs/sun2x.png" class="sunmoon down" id="sawmimg" onclick="locateMe()">
+            <img src="/imgs/sun2x.png" class="sunmoon down" id="sawmimg" onclick="refreshMe()">
 
             <div id="scrollme">
                 <div class="secondborder" id="timesdata">
