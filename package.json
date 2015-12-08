@@ -1,10 +1,11 @@
 {
   "name": "qamar.shabaka",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web app to calculate salat times",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node ./scripts/build",
     "start": "node server.js"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "dependencies": {
     "connect": "^3.4.0",
     "serve-static": "^1.10.0"
+  },
+  "devDependencies": {
+    "node-sass": "^3.4.2"
   }
 }
