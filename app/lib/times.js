@@ -31,7 +31,7 @@ function loadConfiguration(){
         angles = Qamar.Methods.Angles.EGYPT;
 	}
 
-    mid = method == 2 ? Qamar.Methods.Midnight.SHIA : Qamar.Methods.Midnight.STANDARD;
+    mid = parseInt(readCookie("midnight")) == 1 ? Qamar.Methods.Midnight.SHIA : Qamar.Methods.Midnight.STANDARD;
 
 	asr = parseInt(readCookie("hanafi")) == 1 ? Qamar.Methods.Asr.HANAFI : Qamar.Methods.Asr.STANDARD;
 

@@ -11,6 +11,12 @@ function setMethod(n){
 function setHanafi(n){
 	writeCookie("hanafi", n, 365);
 	document.getElementById("config_hanafi").style.display = "none";
+	document.getElementById("config_midnight").style.display = "block";
+}
+
+function setMidnight(n){
+	writeCookie("midnight", n, 365);
+	document.getElementById("config_midnight").style.display = "none";
 	document.getElementById("config_highlats").style.display = "block";
 }
 
@@ -26,7 +32,7 @@ function setLanguage(n){
 }
 
 function checkSettings(){
-	if(readCookie("method") == null || readCookie("hanafi") == null || readCookie("highlats") == null){
+	if(readCookie("method") == null || readCookie("hanafi") == null || readCookie("midnight") == null || readCookie("highlats") == null){
 		navigation.toSettings();
 	}
 }
@@ -35,6 +41,7 @@ module.exports = {
     checkSettings: checkSettings,
     setMethod: setMethod,
     setHanafi: setHanafi,
+    setMidnight: setMidnight,
     setHighlats: setHighlats,
     setLanguage: setLanguage
 };

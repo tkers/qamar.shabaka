@@ -82,6 +82,24 @@
             </div>
         </div>
 
+        <div id="config_midnight" style="display:none">
+            <div class="row fat">
+                <i>Midnight calculation</i>
+            </div>
+
+            <div class="row" style="background-color: rgba(234, 79, 51, 1)">
+                <a href="javascript: setMidnight(0);">
+                    <script type="text/javascript">document.write(parseInt(readCookie("midnight")) == 0 ? '<img src="/imgs/yes.png">' : '<div class="noimg"></div>');</script> Standard
+                </a>
+            </div>
+
+            <div class="row" style="background-color: rgba(178, 62, 77, 1)">
+                <a href="javascript: setMidnight(1);">
+                    <script type="text/javascript">document.write(parseInt(readCookie("midnight")) == 1 ? '<img src="/imgs/yes.png">' : '<div class="noimg"></div>');</script> Shia
+                </a>
+            </div>
+        </div>
+
         <div id="config_highlats" style="display:none">
             <div class="row fat">
                 <i>High latitude corrections</i>
