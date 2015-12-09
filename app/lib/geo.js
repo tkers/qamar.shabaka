@@ -1,4 +1,4 @@
-var Qamar = require("Qamar");
+var Qamar = require("qamar");
 var writeCookie = require("./cookies").write;
 
 function locateMe(cb){

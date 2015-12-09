@@ -1,6 +1,6 @@
 {
   "name": "qamar.shabaka",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Web app to calculate salat times",
   "main": "server.js",
   "scripts": {

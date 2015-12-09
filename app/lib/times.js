@@ -1,4 +1,4 @@
-var Qamar = require("Qamar");
+var Qamar = require("qamar");
 var readCookie = require("./cookies").read;
 var names_arab = require("./arabicNames");
 var names_eng = require("./englishNames");
