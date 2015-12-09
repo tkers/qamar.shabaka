@@ -42,6 +42,17 @@ webpack({
     output: {
         path: path.join(__dirname, "../static/js"),
         filename: "[name].bundle.js"
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: "babel-loader",
+                query: {
+                    presets: ["es2015", "stage-2"]
+                }
+            }
+        ]
     }
 }, (err, res) => {
     if (err) throw err;

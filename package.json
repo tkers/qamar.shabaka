@@ -1,6 +1,6 @@
 {
   "name": "qamar.shabaka",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Web app to calculate salat times",
   "main": "server.js",
   "scripts": {
@@ -20,9 +20,13 @@
   "homepage": "https://github.com/Lapixx/qamar.shabaka",
   "dependencies": {
     "connect": "^3.4.0",
+    "qamar": "github:lapixx/Qamar",
     "serve-static": "^1.10.0"
   },
   "devDependencies": {
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-2": "^6.1.18",
     "node-sass": "^3.4.2",
     "webpack": "^1.12.9"
   }
