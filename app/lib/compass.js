@@ -28,22 +28,24 @@ function angleDiff(a1, a2) {
 var needle_speed = 360 / 36;
 var dir_needle = 0;
 var dir_navigate = 0;
-var dir_target = 0;
+var dir_target = null;
 var first_success = false;
 
 function orientationHandler(e) {
 
+    if (dir_target == null)
+        return;
+
     if (e.webkitCompassAccuracy < 0 || e.webkitCompassAccuracy > 30) {
         document.getElementById('warning').innerHTML = "Warning &rsaquo; calibrate compass!";
+        document.getElementById('needle').style.opacity = 0.25;
         return;
     }
-
-    document.getElementById('warning').innerHTML = "Qibla locator";
 
 	if (e.webkitCompassHeading) {
 		dir_navigate = (360 - e.webkitCompassHeading + dir_target - window.orientation) % 360;
 	}
-	else if (e.absolute !== false) {
+	else if (e.absolute !== false && e.alpha !== null) {
 		dir_navigate = (e.alpha + dir_target) % 360;
 	}
     else {
@@ -51,10 +53,12 @@ function orientationHandler(e) {
         return;
     }
 
+    document.getElementById('warning').innerHTML = "Qibla locator";
+    document.getElementById('needle').style.opacity = 1;
+
 	if (!first_success) {
 		first_success = true;
 		window.setInterval(animateNeedle, 10);
-		document.getElementById('needle').style.opacity = 1;
 	}
 }
 
@@ -70,6 +74,7 @@ function initCompass() {
 }
 
 function updateCompass() {
+    if (readCookie("qibla") == null) return;
 	dir_target = parseInt(readCookie("qibla"));
 	document.getElementById("heading").innerHTML = dir_target + "&deg; " + readCookie("wind");
 }
