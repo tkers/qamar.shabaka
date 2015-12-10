@@ -141,7 +141,7 @@ function addTime(name, time, active){
 	var b = document.createElement("b");
 	if(active)
 		b.className = "highlighted";
-	b.innerText = name;
+	b.textContent = name;
 
 	col.appendChild(b);
 
