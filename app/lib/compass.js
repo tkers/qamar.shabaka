@@ -12,56 +12,55 @@ const rotateNeedle = d => {
 };
 
 const animateNeedle = () => {
-    const diff = angleDiff(dir_needle, dir_navigate);
-    if (diff > needle_speed)
-        dir_needle += needle_speed;
-    else if (diff < -needle_speed)
-        dir_needle -= needle_speed;
+    const diff = angleDiff(needleDir, navigateDir);
+    if (diff > needleSpeed)
+        needleDir += needleSpeed;
+    else if (diff < -needleSpeed)
+        needleDir -= needleSpeed;
     else
-        dir_needle = dir_navigate;
-    rotateNeedle(dir_needle);
-    document.getElementById("heading").className = (dir_needle < 30 || dir_needle > 360 - 30) ? "headingHot" : "headingCold";
+        needleDir = navigateDir;
+    rotateNeedle(needleDir);
+    document.getElementById("heading").className = (needleDir < 30 || needleDir > 360 - 30) ? "headingHot" : "headingCold";
 };
 
-const angleDiff = (a1, a2) => ((((a2 - a1) % 360) + 540) % 360) - 180;
+const angleDiff = (a1, a2) => (a2 - a1 + 180) % 360 - 180;
 
-const needle_speed = 360 / 36;
-let dir_needle = 0;
-let dir_navigate = 0;
-let dir_target = null;
-let first_success = false;
+const needleSpeed = 360 / 36;
+let needleDir = 0;
+let navigateDir = 0;
+let targetDir = null;
+let firstSuccess = false;
 
 const orientationHandler = e => {
 
-    if (dir_target === null)
+    if (targetDir === null)
         return;
 
-    if (e.webkitCompassAccuracy < 0 || e.webkitCompassAccuracy > 30) {
-        document.getElementById("warning").innerHTML = "Warning &rsaquo; calibrate compass!";
-        document.getElementById("needle").style.opacity = 0.25;
-        return;
-    }
+    if (e.webkitCompassAccuracy < 0 || e.webkitCompassAccuracy > 30)
+        return calibrateHandler();
 
     if (e.webkitCompassHeading)
-        dir_navigate = (360 - e.webkitCompassHeading + dir_target - window.orientation) % 360;
+        navigateDir = (360 - e.webkitCompassHeading + targetDir - window.orientation) % 360;
     else if (e.absolute !== false && e.alpha !== null)
-        dir_navigate = (e.alpha + dir_target) % 360;
+        navigateDir = (e.alpha + targetDir) % 360;
     else {
         document.getElementById("warning").innerHTML = "Warning &rsaquo; compass not supported";
+        document.getElementById("needle").style.opacity = 0.25;
         return;
     }
 
     document.getElementById("warning").innerHTML = "Qibla locator";
     document.getElementById("needle").style.opacity = 1;
 
-    if (!first_success) {
-        first_success = true;
+    if (!firstSuccess) {
+        firstSuccess = true;
         window.setInterval(animateNeedle, 10);
     }
 };
 
 const calibrateHandler = () => {
-    alert("Please calibrate your compass.");
+    document.getElementById("warning").innerHTML = "Warning &rsaquo; calibrate compass!";
+    document.getElementById("needle").style.opacity = 0.25;
 };
 
 const initCompass = () => {
@@ -77,8 +76,8 @@ const updateCompass = () => {
     if (readCookie("qibla") === null)
         return;
 
-    dir_target = parseInt(readCookie("qibla"));
-    document.getElementById("heading").innerHTML = dir_target + "&deg; " + readCookie("wind");
+    targetDir = parseInt(readCookie("qibla"), 10);
+    document.getElementById("heading").innerHTML = targetDir + "&deg; " + readCookie("wind");
 };
 
 module.exports = {

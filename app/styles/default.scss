@@ -9,18 +9,18 @@
     font-style: normal;
 }
 
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
-html, body{
+html, body {
     margin: 0px;
     padding: 0px;
     height: 100%;
 }
 
-body{
+body {
     background-color: #FFFFFF;
     font-family: 'Ubuntu', sans-serif;
 
@@ -28,15 +28,6 @@ body{
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.6);
     text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
-
-    /*cursor: none;*/
-
-    /*
-     * BACKGROUND GRADIENT
-     *   top:    rgba(234, 79, 51, 1)
-     *   bottom: rgba(178, 62, 77, 1)
-     *   x/1:    rgba(234 - 56 * x, 79 - 17 * x, 51 + 26 * x, 1)
-     */
 
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ea4f33', endColorstr='#b23e4d');
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ea4f33), to(#b23e4d));
@@ -52,12 +43,12 @@ body{
     cursor: default;
 }
 
-body.bodyhome{
+body.bodyhome {
     background: none;
     background-color: #222222;
 }
 
-div.warning{
+div.warning {
     background-image: url('/imgs/warning.png');
     background-size: 20px 20px;
     background-repeat: no-repeat;
@@ -70,7 +61,8 @@ div.warning{
     padding-left: 30px;
     text-align: left;
 }
-div.warning img{
+
+div.warning img {
     width: 20px;
     height: 20px;
     vertical-align: top;
@@ -78,7 +70,7 @@ div.warning img{
     padding-right: 5px;
 }
 
-img.flipright, img.flipleft{
+img.flipright, img.flipleft {
     position: absolute;
     top: 10px;
     width: 20px;
@@ -88,19 +80,19 @@ img.flipright, img.flipleft{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-img.flipright{
+img.flipright {
     right: 10px;
 }
 
-img.flipleft{
+img.flipleft {
     left: 10px;
 }
 
-img.flipleft:hover, img.flipright:hover{
+img.flipleft:hover, img.flipright:hover {
     opacity: 1;
 }
 
-b{
+b {
     font-weight: normal;
     /*color: rgba(255, 255, 255, 0.6);*/
     color: rgba(227, 179, 183, 1); /* transparancy on cursive script looks bad */
@@ -109,12 +101,12 @@ b{
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-b.highlighted{
+b.highlighted {
     color: rgba(255, 255, 255, 1);
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-#scrollme{
+#scrollme {
     position: absolute;
     bottom: 0px;
     margin: 0px;
@@ -126,14 +118,14 @@ b.highlighted{
     white-space: nowrap;
 }
 
-.secondborder{
+.secondborder {
     padding: 0px;
     margin: 0px;
     display: inline-block;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.col{
+.col {
     display: inline-block;
     padding: 10px 10px 20px 10px;
     margin: 0px;
@@ -142,8 +134,7 @@ b.highlighted{
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-#navigation
-{
+#navigation {
     position: absolute;
     width: 200px;
     height: 80px;
@@ -153,20 +144,22 @@ b.highlighted{
     margin-top: -40px;
     font-size: 10px;
 }
-#navigation #heading{
+
+#navigation #heading {
     font-size: 30px;
 }
 
-.headingCold{
+.headingCold {
     color: rgba(0, 0, 0, 0.6);
     text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
 }
-.headingHot{
+
+.headingHot {
     color: rgba(255, 255, 255, 1);
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-img.sunmoon{
+img.sunmoon {
     position: absolute;
     width: 200px;
     height: 200px;
@@ -177,13 +170,14 @@ img.sunmoon{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     transition: opacity 1s, margin-top 1s;
 }
-img.sunmoon.down{
+
+img.sunmoon.down {
     opacity: 0;
     margin-top: -70px;
 }
 
-@media all and (max-height: 350px){
-    img.sunmoon{
+@media all and (max-height: 350px) {
+    img.sunmoon {
         top: 35%;
         width: 140px;
         height: 140px;
@@ -192,7 +186,7 @@ img.sunmoon.down{
     }
 }
 
-.arrow{
+.arrow {
     border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent;
     border-style: solid;
     border-width: 10px;
@@ -205,7 +199,7 @@ img.sunmoon.down{
     margin-left: -10px;
 }
 
-div.row{
+div.row {
     margin: 0px;
     padding: 0px;
     font-size: 15px;
@@ -216,7 +210,7 @@ div.row{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.5);
 }
 
-div.row.fat{
+div.row.fat {
     background: url('/imgs/linnendark.png');
     background-repeat: repeat;
     background-attachment: fixed;
@@ -231,13 +225,13 @@ div.row.fat{
     opacity: 0.5;
 }
 
-div.row i{
+div.row i {
     font-size: 15px;
     text-transform: capitalize;
     font-style: normal;
 }
 
-div.row img, div.row div.noimg{
+div.row img, div.row div.noimg {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -247,7 +241,7 @@ div.row img, div.row div.noimg{
     margin-right: 5px;
 }
 
-div.row a{
+div.row a {
     display: block;
     height: 35px;
     line-height: 35px;
@@ -256,12 +250,12 @@ div.row a{
     color: rgba(255, 255, 255, 1);
 }
 
-div.row a.confirm{
+div.row a.confirm {
     display: inline-block;
     padding: 10px 20px;
 }
 
-input.field{
+input.field {
     background-color: transparent;
     color: rgba(255, 255, 255, 1);
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -277,11 +271,11 @@ input.field{
     -webkit-border-radius: 0px;
 }
 
-input.field:focus{
+input.field:focus {
     border-color: rgba(255, 255, 255, 0.8);
 }
 
-div.row select{
+div.row select {
     display: block;
     background: transparent;
     background-position: 20px 13px;

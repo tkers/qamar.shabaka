@@ -34,9 +34,8 @@ const setLanguage = x => {
 };
 
 const checkSettings = () => {
-    if (readCookie("method") === null || readCookie("hanafi") === null || readCookie("midnight") === null || readCookie("highlats") === null) {
+    if (readCookie("method") === null || readCookie("hanafi") === null || readCookie("midnight") === null || readCookie("highlats") === null)
         navigation.toSettings();
-    }
 };
 
 module.exports = {

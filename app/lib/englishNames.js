@@ -1,13 +1,13 @@
 "use strict";
 
-const names_eng = [];
-names_eng[0] = "Fajr";
-names_eng[1] = "Sunrise";
-names_eng[2] = "Dhuhr";
-names_eng[3] = "Asr";
-names_eng[4] = "Sundown";
-names_eng[5] = "Maghrib";
-names_eng[6] = "Isha";
-names_eng[7] = "Layl";
+const englishNames = [];
+englishNames[0] = "Fajr";
+englishNames[1] = "Sunrise";
+englishNames[2] = "Dhuhr";
+englishNames[3] = "Asr";
+englishNames[4] = "Sundown";
+englishNames[5] = "Maghrib";
+englishNames[6] = "Isha";
+englishNames[7] = "Layl";
 
-module.exports = names_eng;
+module.exports = englishNames;

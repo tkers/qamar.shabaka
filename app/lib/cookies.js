@@ -5,20 +5,20 @@ const getExpiry = days => {
     if (!days) return "";
 
     const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 
     return "; expires=" + date.toGMTString();
 };
 
-const writeCookie = (name, value, days) => {
+const writeCookie = (cname, value, days) => {
 
     const expires = getExpiry(days);
-    document.cookie = name + "=" + value + expires + "; path=/";
+    document.cookie = cname + "=" + value + expires + "; path=/";
 };
 
-const readCookie = name => {
+const readCookie = cname => {
 
-    const nameEQ = name + "=";
+    const nameEQ = cname + "=";
     const ca = document.cookie.split(";");
 
     for (let i = 0; i < ca.length; i++) {
@@ -35,7 +35,7 @@ const readCookie = name => {
     return null;
 };
 
-const clearCookie = name => writeCookie(name, "", -1);
+const clearCookie = cname => writeCookie(cname, "", -1);
 
 module.exports = {
     write: writeCookie,

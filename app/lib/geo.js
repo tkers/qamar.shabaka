@@ -3,7 +3,7 @@
 const Qamar = require("qamar");
 const writeCookie = require("./cookies").write;
 
-const locateMe = cb => {
+const locateMe = callback => {
 
     const foundMe = position => {
 
@@ -20,12 +20,10 @@ const locateMe = cb => {
         writeCookie("qibla", qib[0], 365);
         writeCookie("wind", qib[1], 365);
 
-        if (cb) cb();
+        callback();
     };
 
     navigator.geolocation.getCurrentPosition(foundMe);
 };
 
-module.exports = {
-    locateMe
-};
+module.exports = { locateMe };
