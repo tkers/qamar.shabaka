@@ -35,7 +35,7 @@ const readCookie = name => {
     return null;
 };
 
-const clearCookie = name =>    createCookie(name, "", -1);
+const clearCookie = name => writeCookie(name, "", -1);
 
 module.exports = {
     write: writeCookie,
