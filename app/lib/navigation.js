@@ -1,17 +1,11 @@
-function toTimes(){
-	window.location = "/";
-}
+"use strict";
 
-function toCompass(){
-	window.location = "/qibla";
-}
-
-function toSettings(){
-	window.location = "/settings";
-}
+const toTimes = () => window.location = "/";
+const toCompass = () => window.location = "/qibla";
+const toSettings = () => window.location = "/settings";
 
 module.exports = {
-    toTimes: toTimes,
-    toCompass: toCompass,
-    toSettings: toSettings
+    toTimes,
+    toCompass,
+    toSettings
 };

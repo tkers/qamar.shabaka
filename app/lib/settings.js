@@ -1,47 +1,49 @@
-var navigation = require("./navigation");
-var writeCookie = require("./cookies").write;
-var readCookie = require("./cookies").read;
+"use strict";
 
-function setMethod(n){
-	writeCookie("method", n, 365);
-	document.getElementById("config_method").style.display = "none";
-	document.getElementById("config_hanafi").style.display = "block";
-}
+const navigation = require("./navigation");
+const writeCookie = require("./cookies").write;
+const readCookie = require("./cookies").read;
 
-function setHanafi(n){
-	writeCookie("hanafi", n, 365);
-	document.getElementById("config_hanafi").style.display = "none";
-	document.getElementById("config_midnight").style.display = "block";
-}
+const setMethod = x => {
+    writeCookie("method", x, 365);
+    document.getElementById("config_method").style.display = "none";
+    document.getElementById("config_hanafi").style.display = "block";
+};
 
-function setMidnight(n){
-	writeCookie("midnight", n, 365);
-	document.getElementById("config_midnight").style.display = "none";
-	document.getElementById("config_highlats").style.display = "block";
-}
+const setHanafi = x => {
+    writeCookie("hanafi", x, 365);
+    document.getElementById("config_hanafi").style.display = "none";
+    document.getElementById("config_midnight").style.display = "block";
+};
 
-function setHighlats(n){
-	writeCookie("highlats", n, 365);
-	document.getElementById("config_highlats").style.display = "none";
-	document.getElementById("config_language").style.display = "block";
-}
+const setMidnight = x => {
+    writeCookie("midnight", x, 365);
+    document.getElementById("config_midnight").style.display = "none";
+    document.getElementById("config_highlats").style.display = "block";
+};
 
-function setLanguage(n){
-	writeCookie("language", n, 365);
-	navigation.toTimes();
-}
+const setHighlats = x => {
+    writeCookie("highlats", x, 365);
+    document.getElementById("config_highlats").style.display = "none";
+    document.getElementById("config_language").style.display = "block";
+};
 
-function checkSettings(){
-	if(readCookie("method") == null || readCookie("hanafi") == null || readCookie("midnight") == null || readCookie("highlats") == null){
-		navigation.toSettings();
-	}
-}
+const setLanguage = x => {
+    writeCookie("language", x, 365);
+    navigation.toTimes();
+};
+
+const checkSettings = () => {
+    if (readCookie("method") === null || readCookie("hanafi") === null || readCookie("midnight") === null || readCookie("highlats") === null) {
+        navigation.toSettings();
+    }
+};
 
 module.exports = {
-    checkSettings: checkSettings,
-    setMethod: setMethod,
-    setHanafi: setHanafi,
-    setMidnight: setMidnight,
-    setHighlats: setHighlats,
-    setLanguage: setLanguage
+    checkSettings,
+    setMethod,
+    setHanafi,
+    setMidnight,
+    setHighlats,
+    setLanguage
 };

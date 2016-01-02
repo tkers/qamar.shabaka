@@ -1,29 +1,31 @@
-var Qamar = require("qamar");
-var writeCookie = require("./cookies").write;
+"use strict";
 
-function locateMe(cb){
+const Qamar = require("qamar");
+const writeCookie = require("./cookies").write;
 
-    function foundMe(position){
-    	if(position.coords.accuracy > 1000){
-    		return;
-    	}
+const locateMe = cb => {
 
-    	var lat = Math.round(position.coords.latitude * 100000) / 100000;
-    	var lng = Math.round(position.coords.longitude * 100000) / 100000;
+    const foundMe = position => {
 
-    	var qib = Qamar.getQibla({latitude: lat, longitude: lng});
+        if (position.coords.accuracy > 1000)
+            return;
 
-    	writeCookie("latitude", lat, 365);
-    	writeCookie("longitude", lng, 365);
-    	writeCookie("qibla", qib[0], 365);
-    	writeCookie("wind", qib[1], 365);
+        const latitude = Math.round(position.coords.latitude * 100000) / 100000;
+        const longitude = Math.round(position.coords.longitude * 100000) / 100000;
 
-    	if (cb) cb();
-    }
+        const qib = Qamar.getQibla({ latitude, longitude });
 
-	navigator.geolocation.getCurrentPosition(foundMe);
-}
+        writeCookie("latitude", latitude, 365);
+        writeCookie("longitude", longitude, 365);
+        writeCookie("qibla", qib[0], 365);
+        writeCookie("wind", qib[1], 365);
+
+        if (cb) cb();
+    };
+
+    navigator.geolocation.getCurrentPosition(foundMe);
+};
 
 module.exports = {
-    locateMe: locateMe
+    locateMe
 };

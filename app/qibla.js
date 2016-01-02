@@ -1,19 +1,18 @@
-var initCompass = require("./lib/compass").initCompass;
-var updateCompass = require("./lib/compass").updateCompass;
-var hideAddressBar = require("./lib/hideAddressBar");
-var locateMe = require("./lib/geo").locateMe;
-var navigation = require("./lib/navigation");
+"use strict";
 
-function refreshMe() {
-    locateMe(updateCompass);
-};
+const initCompass = require("./lib/compass").initCompass;
+const updateCompass = require("./lib/compass").updateCompass;
+const hideAddressBar = require("./lib/hideAddressBar");
+const locateMe = require("./lib/geo").locateMe;
+const navigation = require("./lib/navigation");
 
-function startUp(){
+const refreshMe = () => locateMe(updateCompass);
+const startUp = () => {
     initCompass();
-	updateCompass();
-	hideAddressBar();
-	refreshMe();
-}
+    updateCompass();
+    hideAddressBar();
+    refreshMe();
+};
 
 window.addEventListener("load", startUp, false);
 

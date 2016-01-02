@@ -1,5 +1,7 @@
-var readCookie = require("./lib/cookies").read;
-var settings = require("./lib/settings");
+"use strict";
+
+const readCookie = require("./lib/cookies").read;
+const settings = require("./lib/settings");
 
 window.readCookie = readCookie;
 window.setMethod = settings.setMethod;

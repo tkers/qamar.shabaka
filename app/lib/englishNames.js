@@ -1,4 +1,6 @@
-var names_eng = [];
+"use strict";
+
+const names_eng = [];
 names_eng[0] = "Fajr";
 names_eng[1] = "Sunrise";
 names_eng[2] = "Dhuhr";
