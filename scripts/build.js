@@ -53,7 +53,10 @@ webpack({
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin()
+    ]
 }, (err, res) => {
     if (err) throw err;
 
