@@ -23,7 +23,15 @@ const locateMe = callback => {
         callback();
     };
 
-    navigator.geolocation.getCurrentPosition(foundMe);
+    const errorMe = err => alert(err.message);
+
+    const opts = {
+        enableHighAccuracy: true,
+        maximumAge: 60000,
+        timeout: 60000
+    };
+
+    navigator.geolocation.getCurrentPosition(foundMe, errorMe, opts);
 };
 
 module.exports = { locateMe };
