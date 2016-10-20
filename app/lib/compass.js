@@ -23,7 +23,9 @@ const animateNeedle = () => {
     document.getElementById("heading").className = (needleDir < 30 || needleDir > 360 - 30) ? "headingHot" : "headingCold";
 };
 
-const angleDiff = (a1, a2) => (a2 - a1 + 180) % 360 - 180;
+// because `%` may result in negative outputs
+const angleMod = (x, n) -> x - floor(x / n) * n;
+const angleDiff = (a1, a2) => angleMod((a2 - a1 + 180), 360) - 180;
 
 const needleSpeed = 360 / 36;
 let needleDir = 0;
